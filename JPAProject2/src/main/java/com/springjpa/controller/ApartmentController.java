@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,9 +32,26 @@ HouseMemberJPA houseMemberJPA;
 	public ResponseEntity<List<HouseMembers>> getapartmentRecord() {
 		return ResponseEntity.ok(houseMemberJPA.findAll());
 	}
+<<<<<<< HEAD
 	@GetMapping("/apt/{memberid}")
 	public ResponseEntity<Optional<HouseMembers>> getapartmentRecord(@PathVariable long memberid) {
 		return ResponseEntity.ok(houseMemberJPA.findById(memberid));
 	}
 	
+||||||| b4cb3aa
+=======
+	@DeleteMapping("/apt/{id}")
+	public String delteApartmentRecord(@PathVariable long id) {
+		try {
+		houseMemberJPA.deleteById(id);
+		return "safely deleted";
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+			return "not deleted";
+		}
+		
+	}
+	
+>>>>>>> master
 }
