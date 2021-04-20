@@ -14,13 +14,13 @@ public class HouseMembers {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(insertable = false, updatable = false)
-private int memberid;
+private long memberid;
 private String name;
 private int age;
 @ManyToOne(cascade = CascadeType.ALL)
 @JoinColumn(name = "fk_memberid")
 private Apartment apartment;
-public int getMemberid() {
+public long getMemberid() {
 	return memberid;
 }
 public void setMemberid(int memberid) {
