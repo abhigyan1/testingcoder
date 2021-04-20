@@ -1,6 +1,7 @@
 package com.springjpa.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,13 @@ HouseMemberJPA houseMemberJPA;
 	public ResponseEntity<List<HouseMembers>> getapartmentRecord() {
 		return ResponseEntity.ok(houseMemberJPA.findAll());
 	}
+
+	@GetMapping("/apt/{memberid}")
+	public ResponseEntity<Optional<HouseMembers>> getapartmentRecord(@PathVariable long memberid) {
+		return ResponseEntity.ok(houseMemberJPA.findById(memberid));
+	}
+	
+
 	@DeleteMapping("/apt/{id}")
 	public String delteApartmentRecord(@PathVariable long id) {
 		try {
@@ -44,4 +52,5 @@ HouseMemberJPA houseMemberJPA;
 		
 	}
 	
+
 }
